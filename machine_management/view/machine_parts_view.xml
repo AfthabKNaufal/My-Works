@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="machine_parts_action" model="ir.actions.act_window">
+        <field name="name">Machine Parts</field>
+        <field name="res_model">machine.parts</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="machine_parts_tree_view" model="ir.ui.view">
+        <field name="name">Machine.Parts.List</field>
+        <field name="model">machine.parts</field>
+        <field name="arch" type="xml">
+        <tree>
+            <field name="parts_id"/>
+            <field name="quantity"/>
+            <field name="machine_id"/>
+        </tree>
+        </field>
+    </record>
+
+    <record id="machine_parts_view_form" model="ir.ui.view">
+        <field name="name">Machine.parts.Form</field>
+        <field name="model">machine.parts</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                        <field name="parts_id"/>
+                        <field name="machine_id"/>
+                        </group>
+                        <group>
+                        <field name="quantity"/>
+                        <field name="unit_of_measure"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

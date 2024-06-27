@@ -1,0 +1,38 @@
+<templates id="template" xml:space="preserve">
+    <t t-name="machine_management.new_machine_snippet_carousel">
+    <div t-attf-id="machine_carousal{{uniq}}" class="container carousel slide" data-bs-ride="carousel" t-att-data-bs-interval="interval">
+        <div class="carousel-inner row w-100 mx-auto" role="listbox">
+                        <t t-foreach="chunkdata" t-as="item" t-key="item.id">
+                            <div t-att-class="item.is_active ? 'carousel-item active' : 'carousel-item'">
+                            <div class="row">
+                            <t t-foreach="item" t-as="value" t-key="value.id">
+                            <div class="block span3 col-3">
+                                <div class="card-group">
+                                    <div class="card" id="snippet_card">
+                                        <a class="card-clickable" t-attf-href="/machine_view_snippet/{{value.id}}"> <img class="card-img-top" t-attf-src="data:image/png;base64,{{value.image}}"
+                                             	style="padding: 0px; margin: 0px; height: 160px; width:305px;"/>
+                                        <h5 class="card-head">
+                                            <t t-esc="value.name"/>
+                                        </h5></a>
+                                        <div class="card_money">
+                                           <t t-esc="value.symbol"/> <t t-esc="value.purchase_value"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </t>
+                            </div>
+                            </div>
+                        </t>
+            </div>
+        </div>
+        <a t-attf-href="#machine_carousal{{uniq}}" class="carousel-control-prev" data-bs-slide="prev" role="button" aria-label="Previous" title="Previous">
+        	<span class="fa fa-chevron-circle-left fa-2x"/>
+<span class="visually-hidden">Previous</span>
+    	</a>
+ <a t-attf-href="#machine_carousal{{uniq}}" class="carousel-control-next" data-bs-slide="next" role="button" aria-label="Next" title="Next">
+        	<span class="fa fa-chevron-circle-right fa-2x"/>
+        	<span class="visually-hidden">Next</span>
+    	</a>
+    </t>
+</templates>

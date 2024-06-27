@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="add_to_cart_bom" inherit_id="website_sale.cart_lines">
+        <xpath expr="//t[@t-call='website_sale.cart_line_description_following_lines']"
+               position="after">
+            <div class="bom_prod_grey_scale">
+                <t t-if="multi_products">
+                    <t t-if="line.product_id in multi_products">
+                        <span>
+                            <p>The Bill of Material of this product are:</p>
+                        </span>
+                        <t t-foreach="line.product_id.bom_ids.bom_line_ids.product_id"
+                           t-as="o">
+                            <span><t t-esc="o.name"/>,
+                            </span>
+                        </t>
+                    </t>
+                </t>
+            </div>
+        </xpath>
+    </template>
+</odoo>

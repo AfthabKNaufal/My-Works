@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="machine_transfer_action" model="ir.actions.act_window">
+        <field name="name">Machine Transfer</field>
+        <field name="res_model">machine.transfer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="machine_transfer_view_tree" model="ir.ui.view">
+        <field name="name">machine.transfer.list</field>
+        <field name="model">machine.transfer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="machine_id"/>
+                 <field name="partner_id"/>
+                <field name="machine_id"/>
+                <field name="serial_id"/>
+                <field name="machine_details_ids"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+    <record id="machine_transfer_view_form" model="ir.ui.view">
+        <field name="name">machine.transfer.form</field>
+        <field name="model">machine.transfer</field>
+        <field name="arch" type="xml">
+            <form>
+                    <header>
+                    <button name="action_confirm" string="Confirm" type="object"
+                            class="oe_highlight"/>
+                    </header>
+                <sheet>
+
+                    <group>
+                    <group>
+                        <field name="machine_details_ids" invisible="1"/>
+                        <field name="transfer_type"/>
+                        <field name="machine_id" domain="
+                        [('id', 'in', machine_details_ids)]"/>
+                        <field name="serial_id"/>
+                        <field name="active"/>
+
+                        </group>
+                        <group>
+                        <field name="transfer_date"/>
+                        <field name="partner_id"
+                               invisible="transfer_type != 'install'"/>
+                        <field name="note"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="machine_transfer_search_view" model="ir.ui.view">
+        <field name="name">Machine Search</field>
+        <field name="model">machine.transfer</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter string="Active" name="active"
+                        domain="[('machine_id.state','=','active')]"/>
+                <filter string="In service" name="in_service"
+                        domain="[('machine_id.state','=','in_service')]"/>
+
+                <filter string="Partner" name="partner_id"
+                        context="{'group_by': 'partner_id'}"/>
+                <filter string="Transfer type" name="transfer_type"
+                        context="{'group_by':'transfer_type'}"/>
+            </search>
+        </field>
+    </record>
+</odoo>

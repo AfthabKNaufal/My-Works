@@ -1,0 +1,13 @@
+<odoo>
+    <data noupdate="1">
+    <record id="machine_management_type_data_vending" model="machine.management.type">
+        <field name="name">Vending</field>
+    </record>
+    <record id="machine_management_type_data_cooling" model="machine.management.type">
+        <field name="name">Cooling</field>
+    </record>
+    <record id="machine_management_type_data_laundry" model="machine.management.type">
+        <field name="name">laundry</field>
+    </record>
+    </data>
+</odoo>

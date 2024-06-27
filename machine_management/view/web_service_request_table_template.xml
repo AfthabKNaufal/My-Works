@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="service_request_table_template">
+        <t t-call="website.layout">
+            <div class="whole_form">
+                <div class="heading_service_history">
+                    <header>Service History</header>
+                </div>
+                <div>
+                    <a class="create_request_from" href="/requestservice">
+                        Create
+                    </a>
+                </div>
+                <div class="table_form">
+                    <table action="/requestservice/edit" method="get"
+                           enctype="multipart/form-data">
+                            <thead>
+                            <tr>
+                                <th>Machine</th>
+                                <th>Customer</th>
+                                <th>Date</th>
+                            </tr>
+                            </thead>
+                    <tbody>
+                            <t t-foreach="table_values" t-as="table_values">
+                                <tr>
+                                    <td t-esc="table_values.machine_id.name"/>
+                                    <td t-out="table_values.customer_id.name"/>
+                                    <td t-out="table_values.date"/>
+                                    <td class="view_row">
+                                        <button class="edit_button" name="edit"
+                                                t-att-id="table_values.id"
+                                                type="submit"
+                                                >Edit
+                                        </button>
+                                    </td>
+                                </tr>
+                            </t>
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <form action="/requestservice/update" method="post"
+                  enctype="multipart/form-data" class="o_mark_required">
+                <input type="hidden" name="csrf_token"
+                       t-att-value="request.csrf_token()"/>
+                <div class="modal fade" id="edit-modal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Machine Service</h5>
+                                <button type="button" class="close"
+                                        data-dismiss="modal"
+                                        aria-label="Close"/>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="col-form-label">Machine
+                                    </label>
+                                    <input type="text" name="machine_id" class="form-control"
+                                           id="machine_modal" readonly="1"/>
+                                </div>
+                                <div class="form-group">
+                                    <label id="customer_label"
+                                           class="col-form-label">Customer
+                                    </label>
+                                    <input name="partner_id" type="text" class="form-control"
+                                           id="customer_modal" readonly="1"/>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">Date</label>
+                                    <input name="date" type="date" class="form-control"
+                                           id="date_modal"/>
+                                </div>
+                                <div class="form-group">
+                                    <label  id="internal_label"
+                                           class="col-form-label">Internal Note
+                                    </label>
+                                    <textarea name="internal_note" id="internal_modal" type="text"
+                                              class="form-control"/>
+                                    <input type="hidden" id="id_machine" name="id_machine" invisible="1"/>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" id="update" name="update" class="btn btn-primary">
+                                    Update
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </t>
+    </template>
+</odoo>

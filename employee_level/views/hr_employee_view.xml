@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="hr_employee_form" model="ir.ui.view">
+        <field name="name">inherited.hr.employee</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='coach_id']" position="after">
+                <field name="level_id"/>
+                <field name="salary"/>
+                <field name="high" invisible="1"/>
+            </xpath>
+            <xpath expr="//button[@name='808']" position="after">
+                <button type="object" name="action_promote" string="Promote" class="oe_stat_button" icon="fa-arrows" invisible="high == True "/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

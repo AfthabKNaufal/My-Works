@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+    <t t-name="pos_discount_price_tag.OrderReceipt" t-inherit="point_of_sale.ReceiptHeader" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('pos-receipt-contact')]" position="inside">
+            <div>
+                <t t-if="props.data.discount_tag_id">
+            <span><t t-esc="props.data.discount_tag_id[1]"/></span>
+                </t>
+            </div>
+        </xpath>
+    </t>
+</templates>
