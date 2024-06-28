@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates id="template" xml:space="preserve">
     <t t-name="pos_discount_price_tag.ProductCard" t-inherit="point_of_sale.ProductCard" t-inherit-mode="extension">
-        <xpath expr="//div[hasclass('product-information-tag')]" position="inside" >
-            <div>
-            <span><p>haii</p></span>
+        <xpath expr="//div[hasclass('product-information-tag')]" position="before" >
+            <div class="ribbon">
+                <span><t t-out="DiscountTagAvailable(props.productId)"/></span>
             </div>
         </xpath>
     </t>

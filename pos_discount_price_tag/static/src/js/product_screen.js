@@ -4,7 +4,13 @@ import { patch } from "@web/core/utils/patch";
 
 patch(ProductCard.prototype,{
     setup(){
-    const result=super.setup(...arguments);
-    console.log(this,"dddddd")
+    super.setup();
+    },
+    DiscountTagAvailable(product_id){
+    if (this.pos.db.product_by_id[this.props.productId].discount_tag_id)
+    {
+        return (this.pos.db.product_by_id[this.props.productId].discount_tag_id[1])
     }
+    }
+
 });
