@@ -11,7 +11,7 @@ class PosSession(models.Model):
         result['search_params']['fields'].append('discount_limit')
         return result
 
-    def update_limit(self,value,session_id):
+    def update_limit(self, value, session_id):
         self.browse(session_id).write({
             'discount_limit': value
         })

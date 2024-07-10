@@ -17,3 +17,9 @@
   transform-origin: 0% 100%;
   background-color: #BD1550;
 }
+
+.discount_tag_value{
+top: 33px;
+  position: relative;
+  right: 37px;
+  }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+     <t t-name="point_of-sale.limitpop" t-inherit="point_of_sale.TextAreaPopup" t-inherit-mode="primary">
+        <xpath expr="//*[hasclass('modal-body')]" position="inside">
+            <input t-model="state.otp" type="text" class="form-control border-0 flex-grow-1 rounded-end-0" placeholder="OTP"/>
+        </xpath>
+    </t>
+
+</templates>

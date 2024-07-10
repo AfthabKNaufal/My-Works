@@ -5,18 +5,18 @@
             <t t-if="this.props.line.discount_tag_id">
                 <td>
                 <span>Discount:</span>
-                    <span> <t t-out="this.props.line.discount_tag_id[1]"/></span>
                 </td>
                 </t>
         </xpath>
         <xpath expr="//div[hasclass('product-price')]" position="after">
-            <tr>
-            <div>
+                <t t-if="this.props.line.discount_tag_id">
+            <div class="discount_tag_value">
+
                 <span>
-                    <p>rtyui</p>
+                    <t t-out="this.props.line.discount_tag_id[1]"/>
                 </span>
             </div>
-            </tr>
+            </t>
         </xpath>
     </t>
 </templates>

@@ -6,3 +6,6 @@ class ResConfSettings(models.TransientModel):
 
     discount_limit = fields.Boolean(string="Discount Limit", store=True)
     discount_value = fields.Integer(string="Maximum discount")
+
+
+
