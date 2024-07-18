@@ -1,4 +1,4 @@
-from odoo import api,fields, models, Command
+from odoo import api, fields, models, Command
 from odoo.exceptions import ValidationError
 
 

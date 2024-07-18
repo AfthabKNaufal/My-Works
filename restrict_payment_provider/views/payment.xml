@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="payment_method" inherit_id="payment.method_form">
+        <xpath expr="//input[hasclass('form-check-input')]" position="replace">
+            <t t-if="disable_provider">
+                <t t-foreach="disable_provider" t-as="o">
+                    <t t-if="o.payment_method_ids.id == pm_sudo.id">
+                        <input t-attf-id="o_payment_method_{{pm_sudo.id}}"
+                               name="o_payment_radio"
+                               type="radio"
+                               t-att-checked="is_selected"
+                               t-att-disabled="true"
+                               class="form-check-input position-absolute mt-0"
+                        />
+                        <div class="error-message">
+                            <p>Your Limit has been Reached</p>
+                        </div>
+                    </t>
+                </t>
+            </t>
+
+            <input t-attf-id="o_payment_method_{{pm_sudo.id}}"
+                   name="o_payment_radio"
+                   type="radio"
+                   t-att-checked="is_selected"
+                   class="form-check-input position-absolute mt-0"
+                   data-payment-option-type="payment_method"
+                   t-att-data-payment-option-id="pm_sudo.id"
+                   t-att-data-payment-method-code="pm_sudo.code"
+                   t-att-data-provider-id="provider_sudo.id"
+                   t-att-data-provider-code="provider_sudo._get_code()"
+                   t-att-data-provider-state="provider_sudo.state"/>
+
+
+        </xpath>
+
+    </template>
+    <template id="payment_form" inherit_id="payment.form">
+        <xpath expr="//t[@t-foreach = 'payment_methods_sudo']"
+               position="replace">
+            <t t-foreach="payment_methods_sudo" t-as="pm_sudo">
+                <t t-if="pm_sudo.id in disable_provider.payment_method_ids.ids">
+                    <li name="o_payment_option"
+                        class="list-group-item d-flex flex-column gap-2 py-3 o_outline"
+                        style="background:grey; opacity: 90%;">
+                        <t t-call="payment.method_form">
+                            <t t-set="is_selected"
+                               t-value="pm_sudo.id == selected_method_id"
+                            />
+                        </t>
+                    </li>
+                </t>
+                <t t-else="">
+                    <li name="o_payment_option"
+                        class="list-group-item d-flex flex-column gap-2 py-3 o_outline"
+                    >
+                        <t t-call="payment.method_form">
+                            <t t-set="is_selected"
+                               t-value="pm_sudo.id == selected_method_id"
+                            />
+                        </t>
+                    </li>
+                </t>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="express_checkout_form"
+              inherit_id="payment_demo.express_checkout_form">
+        <xpath expr="//button[hasclass('btn-primary', 'w-100')]"
+               position="replace">
+                    <t t-if="provider_sudo in disable_provider">
+                        <button type="button"
+                                class="btn btn-primary mt-2 w-100"
+                                data-bs-toggle="modal"
+                                t-attf-data-bs-target="#o_payment_demo_modal_{{provider_sudo.id}}"
+                                t-attf-disabled="true"
+                        >
+                            Pay with Demo
+                            <span t-if="not provider_sudo.is_published"
+                                  class="badge rounded-pill text-bg-danger ms-1"
+                            >
+                                Unpublished
+                            </span>
+                        </button>
+                    </t>
+                    <t t-else="">
+                    <button type="button"
+                            class="btn btn-primary mt-2 w-100"
+                            data-bs-toggle="modal"
+                            t-attf-data-bs-target="#o_payment_demo_modal_{{provider_sudo.id}}"
+                    >
+                        Pay with Demo
+                        <span t-if="not provider_sudo.is_published"
+                              class="badge rounded-pill text-bg-danger ms-1"
+                        >
+                            Unpublished
+                        </span>
+                    </button>
+                </t>
+        </xpath>
+    </template>
+</odoo>
