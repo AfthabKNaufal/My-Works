@@ -14,24 +14,21 @@ export class FloatInt extends Component{
         useInputField({ getValue: () => this.props.record.data[this.props.name] || "" ,
         refName: "inputfloatint",parse: (v) => parseFloat(v),});
         onWillRender(() =>  {
-            if (this.input.el)
+            this.rounded()
+        });
+        onMounted(() =>  {
+            this.rounded()
+        });
+    }
+    rounded(){
+        if (this.input.el)
             {
                 this.props.record.data[this.props.name] = Math.round(this.input.el.value)
 
             }
-        });
-        onMounted(() =>  {
-            if (this.input.el)
-            {
-                this.props.record.data[this.props.name] = Math.round(this.input.el.value)
-            }
-        });
     }
+
 }
-export const floatInt = {
-    component: FloatInt,
-    displayName: _t("Float To Int"),
-    supportedTypes: ["float"],
-    isEmpty: () => false,
-};
-registry.category("fields").add("float_int_widget", floatInt);
+FloatInt.component = FloatInt
+FloatInt.supportedTypes = ["float"]
+registry.category("fields").add("float_int_widget", FloatInt);
