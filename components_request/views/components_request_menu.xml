@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<odoo>
-    <menuitem id="component_request_root" name="Component Request">
-        <menuitem id="component_request_first" name="Request" >
-            <menuitem id="component_request_page" name="Component" action="component_request_action"/>
-        </menuitem>
-    </menuitem>
-</odoo>

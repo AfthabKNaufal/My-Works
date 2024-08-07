@@ -1,0 +1,112 @@
+.input_host{
+  width: 10%;
+  position: relative;
+  top: 30px;
+  left: 20px;
+}
+.location{
+    width: 10%;
+  position: relative;
+  top: -23px;
+  left: 447px;
+}
+.input_user{
+width: 10%;
+  position: relative;
+  top: 3px;
+  left: 230px;
+}
+.input_password {
+  width: 10%;
+  position: relative;
+  top: -23px;
+  left: 447px;
+}
+.input_port {
+  width: 10%;
+  position: relative;
+  top: -50px;
+  left: 658px;
+}
+.submit_btn {
+  width: 5%;
+  position: relative;
+  top: -80px;
+  left: 869px;
+}
+.connect_fields {
+  left: 23%;
+  position: relative;
+}
+
+.file_direc
+{
+    border-radius: 20px
+}
+.file-list-container {
+    width: 380px; /* Fixed width */
+    height: 240px; /* Fixed height */
+    overflow-y: auto; /* Vertical scrollbar */
+    border: 1px solid #ccc; /* Optional: Border to visually separate the container */
+    padding: 10px;
+    left: 442px;
+     position: relative;
+}
+.file-item {
+    cursor: pointer;
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid transparent;
+}
+.selected .file-item {
+    background-color: #d3d3d3; /* light grey */
+    border-color: #000; /* Optional: Highlight selected item with a border */
+}
+.file-details-container
+{
+    width: 380px;
+  height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  left: 442px;
+  position: relative;
+  top: 20px;
+}
+.file-list-container-response
+{
+  width: 380px;
+  height: 240px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  left: 46%;
+  position: absolute;
+  bottom: 69%;
+  top: 224px;
+}
+.file-details-container-response
+{
+   width: 380px;
+  height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  left: 46%;
+  position: absolute;
+  bottom: 69%;
+  top: 485px;
+
+}
+.file-item-expand {
+  position: relative;
+  left: 20px;
+}
+.expand_file_name
+{
+    position: relative;
+  left: 16px;
+  top: 12px;
+}
+
+

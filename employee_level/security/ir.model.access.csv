@@ -1,3 +1,0 @@
-id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-access_employee_level,access_employee_level,employee_level.model_employee_level,base.group_user,1,1,1,1
-access_promotion_level,access_promotion_level,model_promotion_level,base.group_user,1,1,1,1

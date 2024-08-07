@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<odoo>
-    <reccord id="out_of_stock" model="discuss.channel">
-        <field name="name">Stock Acknowledgment</field>
-        <field name="channel_type">Chat</field>
-<!--        <field name="description">Notify user about out of stock</field>-->
-<!--&lt;!&ndash;        <field name="group_ids" eval="[Command.link(ref('components_request.group_user'))]"/>&ndash;&gt;-->
-    </reccord>
-</odoo>

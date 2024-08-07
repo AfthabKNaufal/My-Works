@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<odoo>
-    <template id="thank_you_page">
-        <t t-call="website.layout">
-            <header>Thank You</header>
-        </t>
-    </template>
-</odoo>

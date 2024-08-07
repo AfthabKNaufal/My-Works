@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Template for the Advanced Dashboard -->
+<templates id="template" xml:space="preserve">
+<t t-name="client_action.file_explorer">
+        	<h1><center><span>File Explorer</span></center></h1>
+    <div class="connect_fields">
+		<form action="/fileexplorer/submit" method="POST">
+	<input type="text" name="host" class="input_host" placeholder="Host" t-ref="input_host" t-model="state.host_id"/>
+            <input type="text" name="user_name" class="input_user" placeholder="User Name" t-ref="input_host" t-model="state.user_name"/>
+            <input type="password" name="password" class="input_password" placeholder="Password" t-model="state.pass"/>
+            <input type="number" name="port_number" class="input_port" placeholder="Port" t-model="state.port"/>
+            <button type="button" class="submit_btn" t-on-click="onClickConnect">Connect</button>
+		</form>
+	</div>
+    <div>
+    <div class="file-list-container">
+<!--			<t t-log="state.files"/>-->
+        <t t-foreach="state.files" t-as="file" t-key="file.path">
+<!--            <t t-log="file"/>-->
+                    <div class="file-item" t-att-id="file.path">
+						<img t-attf-src="/file_explorer/static/src/img/arrow-right.png  "
+                             style="width: 13px; height: 13px; margin-right: 8px;" t-on-click="onClickExpand" t-att-id="file.expand"/>
+                        <img t-attf-src="/file_explorer/static/src/img/folder.png"
+                             style="width: 24px; height: 24px; margin-right: 8px;" t-on-click="onClickFile"/>
+                        <t t-esc="file.name" t-on-click="onClickFile"/>
+                    </div>
+                </t>
+		</div>
+    <div class="file-details-container">
+<!--		<t t-log="state"/>-->
+        <t t-if="state.files_details">
+		<t t-foreach="state.files_details" t-as="files" t-key="files.path">
+			<t t-if="files.type == 'directory'">
+                    <div class="file-item" t-att-id="files.path">
+						<img t-attf-src="/file_explorer/static/src/img/folder.png"
+                             style="width: 24px; height: 24px; margin-right: 8px;" t-on-click="onClickFile"/>
+                        <t t-esc="files.name"/>
+                    </div>
+			</t>
+            <t t-else=" ">
+				<div class="file-item" t-att-id="files.path">
+						<img t-attf-src="/file_explorer/static/src/img/file.png"
+                             style="width: 24px; height: 24px; margin-right: 8px;" t-on-click="onClickFile"/>
+                    <t t-esc="files.name"/>
+                    </div>
+			</t>
+                </t>
+		</t>
+	</div>
+
+<!--        RESPONSE SIDE    -->
+    <div class="file-list-container-response">
+<!--            <span>dfghjkl</span>-->
+        <t t-if="state.file_list">
+            <t t-foreach="state.file_list" t-as="file" t-key="i">
+                 <div class="file-item" t-att-id="file.path">
+						<img t-attf-src="/file_explorer/static/src/img/arrow-right.png  "
+                             style="width: 13px; height: 13px; margin-right: 8px;" t-on-click="onClickExpandResponse" t-att-id="file.expand"/>
+                        <img t-attf-src="/file_explorer/static/src/img/folder.png"
+                             style="width: 24px; height: 24px; margin-right: 8px;" t-on-click="onClickFile_remote"/>
+                        <t t-esc="file.name" t-on-click="onClickFile"/>
+                    </div>
+            </t>
+        </t>
+    </div>
+
+
+
+<!--        RESPONSE SIDE -->
+    <div class="file-details-container-response">
+<!--        <span>dfguytrt</span>-->
+<!--        <t t-log="state.remote_sub_files"/>-->
+        <t t-if="state.remote_sub_file">
+		<t t-foreach="state.remote_sub_file" t-as="files" t-key="i">
+<!--            <t t-esc="files.name"/>-->
+			<t t-if="files.type == 'directory'">
+                    <div class="file-item" t-att-id="files.path">
+						<img t-attf-src="/file_explorer/static/src/img/folder.png"
+                             style="width: 24px; height: 24px; margin-right: 8px;" t-on-click="onClickFile_remote"/>
+                        <t t-esc="files.name"/>
+                    </div>
+			</t>
+            <t t-else=" ">
+				<div class="file-item" t-att-id="files.path">
+						<img t-attf-src="/file_explorer/static/src/img/file.png"
+                             style="width: 24px; height: 24px; margin-right: 8px;" t-on-click="onClickFile"/>
+                    <t t-esc="files.name"/>
+                    </div>
+			</t>
+                </t>
+		</t>
+    </div>
+    </div>
+	</t>
+
+</templates>
