@@ -14,6 +14,8 @@
     'assets':
             {
                 'web.assets_backend':[
+                    'file_explorer/static/src/lib/dragula/dragula.min.css',
+                    'file_explorer/static/src/lib/dragula/dragula.min.js',
                     'file_explorer/static/src/css/file_explorer.css',
                     'file_explorer/static/src/js/file_explorer.js',
                     'file_explorer/static/src/xml/client_action.xml',
