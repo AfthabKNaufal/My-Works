@@ -1,0 +1,6 @@
+.toggle_btn{
+    position: absolute;
+    z-index: 1000;
+    top: 8%;
+    left: 58%;
+}

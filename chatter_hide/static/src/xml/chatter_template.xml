@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="mail.Chatter" t-inherit-mode="extension">
+<!--        <t t-log="'chatter'"/>-->
+        <xpath expr="//div[hasclass('o-mail-Chatter')]" position="before">
+<!--            <div class="my_chatter_toggle">-->
+                <button type="button" class="toggle_btn btn btn-outline-secondary" id="toggle_chatter_btn" t-on-click="onClickToggle">
+                    Toggle Chatter
+                </button>
+<!--            </div>-->
+        </xpath>
+
+    </t>
+</templates>
